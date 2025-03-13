@@ -47,11 +47,11 @@ resource "spacelift_stack" "second_stack" {
   autodeploy = true
 }
 
-resource "spacelift_run" "second" {
-  stack_id = spacelift_stack.second_stack.id
+resource "spacelift_run" "first" {
+  stack_id = spacelift_stack.first_stack.id
 
   keepers = {
-    branch = spacelift_stack.second_stack.branch
+    branch = spacelift_stack.first_stack.branch
   }
 }
 resource "spacelift_stack" "third_stack" {
@@ -60,14 +60,6 @@ resource "spacelift_stack" "third_stack" {
   repository = "spacelift_outputs_test"
   project_root      = "third_stack"
   autodeploy = true
-}
-
-resource "spacelift_run" "third" {
-  stack_id = spacelift_stack.third_stack.id
-
-  keepers = {
-    branch = spacelift_stack.third_stack.branch
-  }
 }
 
 terraform {
