@@ -1,6 +1,6 @@
 resource "spacelift_stack_dependency" "this" {
-  stack_id            = spacelift_stack.first_stack.id
-  depends_on_stack_id = spacelift_stack.second_stack.id
+  stack_id            = spacelift_stack.second_stack.id
+  depends_on_stack_id = spacelift_stack.first_stack.id
 }
 
 resource "spacelift_stack_dependency_reference" "this" {
@@ -10,8 +10,8 @@ resource "spacelift_stack_dependency_reference" "this" {
 }
 
 resource "spacelift_stack_dependency" "that" {
-  stack_id            = spacelift_stack.first_stack.id
-  depends_on_stack_id = spacelift_stack.third_stack.id
+  stack_id            = spacelift_stack.third_stack.id
+  depends_on_stack_id = spacelift_stack.first_stack.id
 }
 
 resource "spacelift_stack_dependency_reference" "that" {
@@ -21,8 +21,8 @@ resource "spacelift_stack_dependency_reference" "that" {
 }
 
 resource "spacelift_stack_dependency" "other" {
-  stack_id            = spacelift_stack.second_stack.id
-  depends_on_stack_id = spacelift_stack.third_stack.id
+  stack_id            = spacelift_stack.third_stack.id
+  depends_on_stack_id = spacelift_stack.second_stack.id
 }
 
 resource "spacelift_stack_dependency_reference" "other" {
