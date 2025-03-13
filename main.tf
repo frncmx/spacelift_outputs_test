@@ -26,7 +26,7 @@ resource "spacelift_stack_dependency" "other" {
 }
 
 resource "spacelift_stack_dependency_reference" "other" {
-  stack_dependency_id = spacelift_stack_dependency.that.id
+  stack_dependency_id = spacelift_stack_dependency.other.id
   output_name         = "second_stack_output"
   input_name          = "TF_VAR_second_stack_output"
 }
