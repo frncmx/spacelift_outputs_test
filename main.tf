@@ -53,7 +53,14 @@ resource "spacelift_run" "first" {
   keepers = {
     branch = spacelift_stack.first_stack.branch
   }
+
+  depends_on = [
+    spacelift_stack_dependency.this,
+    spacelift_stack_dependency.that,
+    spacelift_stack_dependency.other
+  ]
 }
+
 resource "spacelift_stack" "third_stack" {
   branch     = "main"
   name       = "third stack"
