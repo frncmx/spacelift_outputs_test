@@ -1,3 +1,3 @@
 output "first_stack_output" {
-    value     = "first_stack_value3"
+    value     = "first_stack_value4"
 }
