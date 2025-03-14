@@ -1,3 +1,8 @@
+
+data "spacelift_worker_pool" "local-kind" {
+  worker_pool_id = "01JNGR8NAC4YY22418MPVZS87F"
+}
+
 resource "spacelift_stack_dependency" "this" {
   stack_id            = spacelift_stack.second_stack.id
   depends_on_stack_id = spacelift_stack.first_stack.id
@@ -37,6 +42,7 @@ resource "spacelift_stack" "first_stack" {
   autodeploy = true
   repository = "spacelift_outputs_test"
   project_root      = "first_stack"
+  worker_pool_id = data.spacelift_worker_pool.local-kind.id
 }
 
 resource "spacelift_stack" "second_stack" {
@@ -45,21 +51,9 @@ resource "spacelift_stack" "second_stack" {
   repository = "spacelift_outputs_test"
   project_root      = "second_stack"
   autodeploy = true
+  worker_pool_id = data.spacelift_worker_pool.local-kind.id
 }
 
-resource "spacelift_run" "first" {
-  stack_id = spacelift_stack.first_stack.id
-
-  keepers = {
-    branch = spacelift_stack.first_stack.branch
-  }
-
-  depends_on = [
-    spacelift_stack_dependency.this,
-    spacelift_stack_dependency.that,
-    spacelift_stack_dependency.other
-  ]
-}
 
 resource "spacelift_stack" "third_stack" {
   branch     = "main"
@@ -67,6 +61,7 @@ resource "spacelift_stack" "third_stack" {
   repository = "spacelift_outputs_test"
   project_root      = "third_stack"
   autodeploy = true
+  worker_pool_id = data.spacelift_worker_pool.local-kind.id
 }
 
 terraform {
