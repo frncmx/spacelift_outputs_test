@@ -1,6 +1,6 @@
 
 data "spacelift_worker_pool" "local-kind" {
-  worker_pool_id = "01JNGR8NAC4YY22418MPVZS87F"
+  worker_pool_id = "01JSPVEPPDFSPVAR51CFQ7F3C1"
 }
 
 resource "spacelift_stack_dependency" "this" {
