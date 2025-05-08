@@ -1,3 +1,3 @@
 output "first_stack_output" {
-    value     = "4"
+    value     = "5"
 }
